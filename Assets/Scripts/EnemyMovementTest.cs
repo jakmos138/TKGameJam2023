@@ -10,6 +10,7 @@ public class EnemyMovementTest : MonoBehaviour
     float speed = 3f;
     public float delay;
     int direction = 1;
+    float distanceTravelled = 0f;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyMovementTest : MonoBehaviour
         if (delay <= 0f)
         {
             float step = speed * Time.deltaTime;
+            distanceTravelled += step;
             this.transform.position = Vector3.MoveTowards(this.transform.position, cornerPoints[currentPoint], step);
 
             if (this.transform.position == cornerPoints[currentPoint])
@@ -37,5 +39,10 @@ public class EnemyMovementTest : MonoBehaviour
         {
             delay -= Time.deltaTime;
         }
+    }
+
+    public float GetDistanceTravelled()
+    {
+        return distanceTravelled;
     }
 }
