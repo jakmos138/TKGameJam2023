@@ -10,8 +10,13 @@ public class ShootAtEnemy : MonoBehaviour
     void Update()
     {
         Vector3 origin = new Vector3(this.transform.position.x, 1.2f, this.transform.position.z);
-        RaycastHit hit;
+        RaycastHit[] hit = Physics.SphereCastAll(origin, 3f, transform.forward, 3f, enemyMask);
 
-        Physics.SphereCast(origin, 3f, transform.forward, out hit, )
+        if (hit.Length > 0){
+            for (int i = 0; i < hit.Length; i++)
+            {
+                Debug.Log(hit[i].transform.position);
+            }
+        }
     }
 }

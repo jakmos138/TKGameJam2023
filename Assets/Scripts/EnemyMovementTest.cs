@@ -8,6 +8,7 @@ public class EnemyMovementTest : MonoBehaviour
     public Vector3[] cornerPoints;
     private int currentPoint = 1;
     float speed = 3f;
+    public float delay;
     int direction = 1;
 
     private void Start()
@@ -18,16 +19,23 @@ public class EnemyMovementTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float step = speed * Time.deltaTime;
-        this.transform.position = Vector3.MoveTowards(this.transform.position, cornerPoints[currentPoint], step);
-
-        if (this.transform.position == cornerPoints[currentPoint])
+        if (delay <= 0f)
         {
-            if (currentPoint == cornerPoints.Length - 1 || currentPoint == 0)
+            float step = speed * Time.deltaTime;
+            this.transform.position = Vector3.MoveTowards(this.transform.position, cornerPoints[currentPoint], step);
+
+            if (this.transform.position == cornerPoints[currentPoint])
             {
-                direction *= -1;
+                if (currentPoint == cornerPoints.Length - 1 || currentPoint == 0)
+                {
+                    direction *= -1;
+                }
+                currentPoint += direction;
             }
-            currentPoint += direction;
+        } 
+        else
+        {
+            delay -= Time.deltaTime;
         }
     }
 }
