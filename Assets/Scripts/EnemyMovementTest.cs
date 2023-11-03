@@ -7,7 +7,7 @@ public class EnemyMovementTest : MonoBehaviour
 
     public Vector3[] cornerPoints;
     private int currentPoint = 1;
-    float speed = 3f;
+    public float speed = 3f;
     public float delay;
     int direction = 1;
     float distanceTravelled = 0f;
