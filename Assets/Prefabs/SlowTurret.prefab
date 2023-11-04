@@ -81,12 +81,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ec9ee21cbc0c03444b3751f37f017795, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1778730911084241395}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ec9ee21cbc0c03444b3751f37f017795, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8722962380662490845}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ec9ee21cbc0c03444b3751f37f017795, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4923307347458802172}
   m_SourcePrefab: {fileID: 100100000, guid: ec9ee21cbc0c03444b3751f37f017795, type: 3}
 --- !u!1 &5776864262931006208 stripped
 GameObject:
@@ -149,38 +143,3 @@ MonoBehaviour:
   level: 1
   damage: 0
   gameManager: {fileID: 0}
---- !u!114 &8722962380662490845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776864262931006208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &-4923307347458802172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776864262931006208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba86f988654319c4f83a048d48afd631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outline: {fileID: 8722962380662490845}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  player: {fileID: 1910115726886021494, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
