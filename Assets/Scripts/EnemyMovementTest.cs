@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyMovementTest : MonoBehaviour
 {
 
+    public int hp = 30;
     public Vector3[] cornerPoints;
     private int currentPoint = 1;
-    public float speed = 3f;
-    public float delay;
+    public float speed = 2f;
     int direction = 1;
     float distanceTravelled = 0f;
     int hpCost = 1;
@@ -24,32 +24,33 @@ public class EnemyMovementTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (delay <= 0f)
+        if(hp <= 0)
         {
-            float step = speed * Time.deltaTime;
-            if (slowTime > 0f)
-            {
-                step *= 0.5f;
-                slowTime -= Time.deltaTime;
-            }
-            distanceTravelled += step;
-            transform.position = Vector3.MoveTowards(transform.position, cornerPoints[currentPoint], step);
-
-            if (transform.position == cornerPoints[currentPoint])
-            {
-                if (currentPoint == cornerPoints.Length - 1)
-                {
-                    Destroy(gameObject);
-                    gameManager.TakeDamage(hpCost);
-                }
-                currentPoint += direction;
-            }
-        } 
-        else
-        {
-            delay -= Time.deltaTime;
+            Destroy(gameObject);
         }
-    }
+
+        float step = speed * Time.deltaTime;
+        if (slowTime > 0f)
+        {
+            step *= 0.5f;
+            slowTime -= Time.deltaTime;
+        }
+        distanceTravelled += step;
+        transform.position = Vector3.MoveTowards(transform.position, cornerPoints[currentPoint], step);
+        Quaternion toRotation = Quaternion.LookRotation((cornerPoints[currentPoint] - transform.position).normalized, Vector3.up);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720f * Time.deltaTime);
+
+        if (transform.position == cornerPoints[currentPoint])
+        {
+            if (currentPoint == cornerPoints.Length - 1)
+            {
+                Destroy(gameObject);
+                gameManager.TakeDamage(hpCost);
+            }
+            currentPoint += direction;
+        }
+    } 
 
     public float GetDistanceTravelled()
     {
@@ -64,5 +65,15 @@ public class EnemyMovementTest : MonoBehaviour
     public bool IsSlowed()
     {
         return slowTime > 0f;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+    }
+
+    private void OnDestroy()
+    {
+        gameManager.enemiesToKill--;
     }
 }

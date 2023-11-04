@@ -71,14 +71,16 @@ public class PlayerMovement : MonoBehaviour
                         id = i;
                     }
                 }
-
-                if (Input.GetKeyDown(KeyCode.E))
+                if (id != -1)
                 {
-                    InteractItem(objects[id].gameObject);
-                } 
-                else if(Input.GetKeyDown(KeyCode.Q))
-                {
-                    SellItem(objects[id].gameObject);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        InteractItem(objects[id].gameObject);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        SellItem(objects[id].gameObject);
+                    }
                 }
             }
         }

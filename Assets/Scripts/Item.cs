@@ -5,8 +5,9 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public int value = 70;
-    public int type = 0;
+    public int type;
     public int level = 1;
+    public int damage;
 
     [SerializeField] GameManager gameManager;
 

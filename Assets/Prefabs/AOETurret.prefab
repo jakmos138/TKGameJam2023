@@ -140,4 +140,5 @@ MonoBehaviour:
   value: 70
   type: 2
   level: 1
+  damage: 15
   gameManager: {fileID: 0}

@@ -10,6 +10,7 @@ public class FollowTarget : MonoBehaviour
     private float speed;
     private int homing;
     private int type;
+    private int damage;
 
     void Update()
     {
@@ -33,12 +34,13 @@ public class FollowTarget : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy")) {
-            if (type != 1)
-            {
-                Destroy(collision.collider.gameObject);
-            } else
+            if (type == 1)
             {
                 collision.collider.transform.GetComponent<EnemyMovementTest>().SlowDown(2f);
+            }
+            if (type != 2)
+            {
+                collision.collider.gameObject.GetComponent<EnemyMovementTest>().TakeDamage(damage);
             }
             Destroy(gameObject);
         }
@@ -48,7 +50,7 @@ public class FollowTarget : MonoBehaviour
         }
     }
 
-    public void SetParameters(Transform target, float speed, int homing = 0, int type = 0)
+    public void SetParameters(Transform target, float speed, int homing, int type, int damage)
     {
         this.target = target;
         Vector3 direction = target.position - transform.position;
@@ -56,6 +58,7 @@ public class FollowTarget : MonoBehaviour
         this.speed = speed;
         this.homing = homing;
         this.type = type;
+        this.damage = damage;
     }
 
     private void OnDestroy()
@@ -65,7 +68,7 @@ public class FollowTarget : MonoBehaviour
             Collider[] hit = Physics.OverlapSphere(transform.position, 1f, enemyMask);
             for (int i = 0; i < hit.Length; i++)
             {
-                Destroy(hit[i].gameObject);
+                hit[i].gameObject.GetComponent<EnemyMovementTest>().TakeDamage(Mathf.RoundToInt(damage));
             }
         }
     }
