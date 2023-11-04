@@ -2655,6 +2655,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ffa1f186331e4064e85cb765b2638777, type: 2}
   enemies:
   - {fileID: 3759430555551895499, guid: e2b0eab1d7039fe46924aa545f25050e, type: 3}
+  - {fileID: 5943424330027518400, guid: 322a999670c0535419ba575fca4a6a88, type: 3}
+  - {fileID: 5272167079074115950, guid: e34c1227dbb47494f8aa257357627679, type: 3}
+  - {fileID: 9006411548125620868, guid: dc620c52941669a40817e66e70479be1, type: 3}
   prices: 64000000fa000000f4010000
   towers:
   - {fileID: 2885450772651097511, guid: af8f5e101a7603945a0cdc872a5c1d75, type: 3}
@@ -7172,63 +7175,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
---- !u!1001 &6199739814368675358
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1557341231727729210, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_Name
-      value: EnemyWarriorBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050666729006339595, guid: 183c643cc347506479af074a42ad630a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 183c643cc347506479af074a42ad630a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7257,4 +7203,3 @@ SceneRoots:
   - {fileID: 1397367055}
   - {fileID: 865510229}
   - {fileID: 20751614}
-  - {fileID: 6199739814368675358}

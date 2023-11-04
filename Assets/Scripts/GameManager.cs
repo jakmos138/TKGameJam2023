@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         if(delay <= 0f)
         {
-            GameObject enemy = Instantiate(enemies[Random.Range(0,4)], this.transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemies[Random.Range(0,4)]);
             enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[0].cornerPoints;
 
             delay = 1.5f;
