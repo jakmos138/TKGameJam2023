@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     float speed = 6f;
+    float rotationSpeed = 600f;
+
     GameObject carriedItem;
     public int money = 0;
     public LayerMask itemMask;
@@ -15,7 +17,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+
         transform.position = new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime + transform.position.x, transform.position.y, Input.GetAxis("Vertical") * speed * Time.deltaTime + transform.position.z);
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
 
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 
