@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int lives = 30;
-    public int enemiesToKill = 20;
+    public int lives = 20;
+    public int enemiesToKill = 200;
 
     private bool paused = false;
     
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         if(delay <= 0f)
         {
-            GameObject enemy = Instantiate(enemies[0], this.transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemies[Random.Range(0,4)], this.transform.position, Quaternion.identity);
             enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[0].cornerPoints;
 
             delay = 1.5f;

@@ -20,7 +20,7 @@ public class EnemyMovementTest : MonoBehaviour
 
     private void Start()
     {
-        transform.position = new Vector3(cornerPoints[0][0], cornerPoints[0][1], cornerPoints[0][2]);
+        transform.position = new Vector3(cornerPoints[0][0], transform.position.y, cornerPoints[0][2]);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -44,16 +44,17 @@ public class EnemyMovementTest : MonoBehaviour
         float step = speed * Time.deltaTime;
         if (slowTime > 0f)
         {
-            step *= 0.5f;
+            step *= 0.6f;
             slowTime -= Time.deltaTime;
         }
         distanceTravelled += step;
-        transform.position = Vector3.MoveTowards(transform.position, cornerPoints[currentPoint], step);
-        Quaternion toRotation = Quaternion.LookRotation((cornerPoints[currentPoint] - transform.position).normalized, Vector3.up);
+        Vector3 curTarget = new Vector3(cornerPoints[currentPoint].x, transform.position.y, cornerPoints[currentPoint].z);
+        transform.position = Vector3.MoveTowards(transform.position, curTarget, step);
+        Quaternion toRotation = Quaternion.LookRotation((curTarget - transform.position).normalized, Vector3.up);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720f * Time.deltaTime);
 
-        if (transform.position == cornerPoints[currentPoint])
+        if (transform.position == curTarget)
         {
             if (currentPoint == cornerPoints.Length - 1)
             {
