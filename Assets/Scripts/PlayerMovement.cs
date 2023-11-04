@@ -59,7 +59,6 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (id != -1)
                 {
-                    objects[id].gameObject.GetComponent<Outline>().OutlineWidth = 10f;
                     distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
@@ -95,9 +94,6 @@ public class PlayerMovement : MonoBehaviour
                     if (objects[id].gameObject.CompareTag("Box"))
                     {
                         objects[id].gameObject.GetComponent<Outline>().OutlineWidth = 10f;
-                    } else if (!objects[id].gameObject.CompareTag("Station"))
-                    {
-                        objects[id].transform.parent.GetComponent<Outline>().OutlineWidth = 10f;
                     }
                     distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
                     if (Input.GetKeyDown(KeyCode.E))
@@ -151,6 +147,8 @@ public class PlayerMovement : MonoBehaviour
     void SellItem(GameObject item)
     {
         money += item.GetComponent<Item>().value;
+        if(item.transform.parent.CompareTag("Grid"))
+            item.transform.parent.GetComponent<Renderer>().material.color = Color.red;
         Destroy(item);
     }
 

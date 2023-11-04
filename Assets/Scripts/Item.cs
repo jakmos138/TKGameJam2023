@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -27,6 +25,13 @@ public class Item : MonoBehaviour
                 money -= gameManager.prices[type * 3 + level];
             }
         }
+
+        Material material = transform.parent.GetComponent<Renderer>().material;
+        if (level == 2)
+        material.color = Color.white;
+        else if (level == 3)
+        material.color = Color.black;
+
         return money;
     }
 }

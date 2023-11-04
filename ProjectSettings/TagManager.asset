@@ -8,6 +8,7 @@ TagManager:
   - EndOfMap
   - Box
   - Station
+  - Grid
   layers:
   - Default
   - TransparentFX

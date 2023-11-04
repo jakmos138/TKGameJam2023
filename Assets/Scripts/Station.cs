@@ -8,6 +8,7 @@ public class Station : MonoBehaviour
     public int cost = 100;
     public GameObject[] spawnPoints;
     [SerializeField] GameManager gameManager;
+    private bool firstSummon = true;
 
     private void Start()
     {
@@ -30,7 +31,18 @@ public class Station : MonoBehaviour
             if (money >= cost && id != -1)
             {
                 money -= cost;
-                Instantiate(gameManager.towers[Random.Range(0, 4) * 2], spawnPoints[id].transform);
+                if (firstSummon)
+                {
+                    int index = Random.Range(0, 4);
+                    if (index == 1)
+                    {
+                        index = 0;
+                    }
+                    Instantiate(gameManager.towers[index * 2], spawnPoints[id].transform);
+                } else
+                {
+                    Instantiate(gameManager.towers[Random.Range(0, 4) * 2], spawnPoints[id].transform);
+                }
             }
         }
         return money;

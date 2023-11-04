@@ -11,6 +11,7 @@ public class FollowTarget : MonoBehaviour
     private int homing;
     private int type;
     private int damage;
+    public GameObject explosion;
 
     void Update()
     {
@@ -69,6 +70,8 @@ public class FollowTarget : MonoBehaviour
             for (int i = 0; i < hit.Length; i++)
             {
                 hit[i].gameObject.GetComponent<EnemyMovementTest>().TakeDamage(Mathf.RoundToInt(damage));
+                Light lightSource = transform.GetChild(0).GetComponent<Light>();
+
             }
         }
     }
