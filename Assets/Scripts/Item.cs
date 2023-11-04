@@ -21,8 +21,8 @@ public class Item : MonoBehaviour
             if (money >= gameManager.prices[type * 3 + level])
             {
                 value += Mathf.FloorToInt(gameManager.prices[type * 3 + level] * 0.7f);
-                level += 1;
                 money -= gameManager.prices[type * 3 + level];
+                level += 1;
             }
         }
 
