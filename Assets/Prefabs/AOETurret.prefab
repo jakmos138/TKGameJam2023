@@ -104,6 +104,7 @@ MonoBehaviour:
     m_Bits: 64
   bullet: {fileID: 9219308246724850039, guid: 37c57b8fce08bad4f8e1e27d3a593f17, type: 3}
   attDelay: 1.2
+  rangeModifier: 1
 --- !u!135 &8440824243422531608
 SphereCollider:
   m_ObjectHideFlags: 0

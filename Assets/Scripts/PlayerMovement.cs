@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask gridMask;
     public GameManager gameManager;
     [SerializeField] Rigidbody rb;
+    private int cameraPerspective = 0;
+    public Transform mainCamera;
     
 
     // Update is called once per frame
@@ -20,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
     {
 
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ChangeCameraPerspective();
+        }
 
         if (carriedItem != null)
         {
@@ -133,6 +140,22 @@ public class PlayerMovement : MonoBehaviour
     {
         carriedItem.transform.position = new Vector3(carriedItem.transform.position.x, 1f, carriedItem.transform.position.z);
         carriedItem = null;
+    }
+
+    void ChangeCameraPerspective()
+    {
+        if (cameraPerspective == 0)
+        {
+            cameraPerspective = 1;
+            mainCamera.position = new Vector3(0, 18, 0);
+            mainCamera.eulerAngles = new Vector3(90f, 0f, 0f);
+
+        } else
+        {
+            cameraPerspective = 0;
+            mainCamera.position = new Vector3(0, 11.5f, -10);
+            mainCamera.eulerAngles = new Vector3(55f,0f,0f);
+        }
     }
 
 }

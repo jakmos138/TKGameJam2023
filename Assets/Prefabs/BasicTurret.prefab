@@ -104,6 +104,7 @@ MonoBehaviour:
     m_Bits: 64
   bullet: {fileID: 9219308246724850039, guid: 57cf228baeb399a4cbf59db5e3c44415, type: 3}
   attDelay: 0.6
+  rangeModifier: 1
 --- !u!135 &5403350665837890926
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -140,4 +141,5 @@ MonoBehaviour:
   value: 70
   type: 0
   level: 1
+  damage: 20
   gameManager: {fileID: 0}

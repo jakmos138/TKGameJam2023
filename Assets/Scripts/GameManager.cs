@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
             GameObject enemy = Instantiate(enemies[0], this.transform.position, Quaternion.identity);
             enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[0].cornerPoints;
 
-            delay = 0.6f;
+            delay = 1.5f;
         } 
         else
         {

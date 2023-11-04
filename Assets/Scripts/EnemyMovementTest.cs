@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class EnemyMovementTest : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class EnemyMovementTest : MonoBehaviour
     float distanceTravelled = 0f;
     int hpCost = 1;
     GameManager gameManager;
+    public Animator animator;
     float slowTime = 0f;
+    float timeTillDeath = 2.4f;
 
     private void Start()
     {
@@ -24,7 +27,16 @@ public class EnemyMovementTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(hp <= 0)
+        {
+            animator.SetTrigger("Dead");
+            speed = 0;
+            GetComponent<Collider>().enabled = false;
+            timeTillDeath -= Time.deltaTime;
+        }
+
+        if(timeTillDeath < 0)
         {
             Destroy(gameObject);
         }

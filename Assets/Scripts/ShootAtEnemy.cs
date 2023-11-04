@@ -7,6 +7,8 @@ public class ShootAtEnemy : MonoBehaviour
     public LayerMask enemyMask;
     public GameObject bullet;
     public float attDelay;
+    public float rangeModifier;
+    private float range = 4f;
     private float curAttDelay = 0f;
 
     private Item tower;
@@ -21,7 +23,7 @@ public class ShootAtEnemy : MonoBehaviour
     {
         
         Vector3 origin = new Vector3(transform.position.x, 1.2f, transform.position.z);
-        Collider[] hit = Physics.OverlapSphere(origin, 4.5f, enemyMask);
+        Collider[] hit = Physics.OverlapSphere(origin, range, enemyMask);
 
         if (hit.Length > 0)
         {
