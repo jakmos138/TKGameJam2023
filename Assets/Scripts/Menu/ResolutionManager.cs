@@ -8,15 +8,15 @@ public class ResolutionManager : MonoBehaviour
 {
     
     [SerializeField] TMPro.TMP_Dropdown resolutionDropdown;
-    
 
+    
     Resolution[] resulutions;
 
 
 
     private void Start()
     {
-        
+        resulutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
