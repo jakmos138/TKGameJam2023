@@ -19,7 +19,8 @@ public class Station : MonoBehaviour
         if (type == 0)
         {
             int id = -1;
-            for (int i = 0; i < spawnPoints.Length; i++) {
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
                 if (spawnPoints[i].transform.childCount == 0)
                 {
                     id = i;
@@ -29,7 +30,7 @@ public class Station : MonoBehaviour
             if (money >= cost && id != -1)
             {
                 money -= cost;
-                Instantiate(gameManager.towers[Random.Range(0,4) * 2], spawnPoints[id].transform);
+                Instantiate(gameManager.towers[Random.Range(0, 4) * 2], spawnPoints[id].transform);
             }
         }
         return money;

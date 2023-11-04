@@ -143,3 +143,11 @@ MonoBehaviour:
   level: 1
   damage: 20
   gameManager: {fileID: 0}
+  renderers:
+  - {fileID: 8277859998126675176}
+  color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!23 &8277859998126675176 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 8a59706bd460150438fae261e35da76e, type: 3}
+  m_PrefabInstance: {fileID: 7287185312070174828}
+  m_PrefabAsset: {fileID: 0}

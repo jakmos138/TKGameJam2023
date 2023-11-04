@@ -51,10 +51,12 @@ public class PlayerMovement : MonoBehaviour
                         }
                     }
                 }
-
-                if (Input.GetKeyDown(KeyCode.E) && id != -1)
+                if (id != -1)
                 {
-                    PlaceItem(objects[id].gameObject);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        PlaceItem(objects[id].gameObject);
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.Q))
@@ -79,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
                 if (id != -1)
-                {
+                {            
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         InteractItem(objects[id].gameObject);

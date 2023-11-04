@@ -82,6 +82,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5600293367030662492}
   m_SourcePrefab: {fileID: 100100000, guid: f8f764526ff83ad4183c7d9ac83c6c35, type: 3}
+--- !u!23 &7425114624925771295 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: f8f764526ff83ad4183c7d9ac83c6c35, type: 3}
+  m_PrefabInstance: {fileID: 8127550131762412187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8938433707600873418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f8f764526ff83ad4183c7d9ac83c6c35, type: 3}
@@ -143,3 +148,6 @@ MonoBehaviour:
   level: 1
   damage: 20
   gameManager: {fileID: 0}
+  renderers:
+  - {fileID: 7425114624925771295}
+  color: {r: 1, g: 1, b: 1, a: 1}
