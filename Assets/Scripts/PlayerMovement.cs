@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float speed = 6f;
+    float speed = 60f;
     float rotationSpeed = 600f;
 
     GameObject carriedItem;
@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask itemMask;
     public LayerMask gridMask;
     public GameManager gameManager;
+    [SerializeField] Rigidbody rb;
     
 
     // Update is called once per frame
@@ -19,9 +20,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
 
-        transform.position = new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime + transform.position.x, transform.position.y, Input.GetAxis("Vertical") * speed * Time.deltaTime + transform.position.z);
+        rb.MovePosition(transform.position + moveDirection * Time.deltaTime * speed);
 
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (moveDirection != new Vector3(0,0,0))
         {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
             carriedItem.transform.position = transform.position + transform.forward;
             carriedItem.transform.rotation = transform.rotation;
 
-            Collider[] objects = Physics.OverlapSphere(origin, 3f, gridMask);
+            Collider[] objects = Physics.OverlapSphere(origin, 1f, gridMask);
 
             if (objects.Length > 0)
             {
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && id != -1)
                 {
                     PlaceItem(objects[id].gameObject);
                 }
@@ -66,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Collider[] objects = Physics.OverlapSphere(origin, 3f, itemMask);
+            Collider[] objects = Physics.OverlapSphere(origin, 1f, itemMask);
 
             if (objects.Length > 0)
             {
@@ -98,7 +99,13 @@ public class PlayerMovement : MonoBehaviour
         if (item.CompareTag("Box"))
         {
             carriedItem = item;
-        } else {
+        }
+        else if (item.CompareTag("Station"))
+        {
+            money = item.GetComponent<Station>().Interact(money);
+        }
+        else
+        {
             money = item.GetComponent<Item>().Upgrade(money);
         }
     }
@@ -111,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlaceItem(GameObject grid)
     {
-        Instantiate(gameManager.towers[carriedItem.GetComponent<Item>().type], grid.transform);
+        Instantiate(gameManager.towers[carriedItem.GetComponent<Item>().type * 2 + 1], grid.transform);
         Destroy(carriedItem);
         carriedItem = null;
     }
@@ -121,4 +128,5 @@ public class PlayerMovement : MonoBehaviour
         carriedItem.transform.position = new Vector3(carriedItem.transform.position.x, 1f, carriedItem.transform.position.z);
         carriedItem = null;
     }
+
 }

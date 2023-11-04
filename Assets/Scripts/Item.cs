@@ -8,7 +8,12 @@ public class Item : MonoBehaviour
     public int type = 0;
     public int level = 1;
 
-    public GameManager gameManager;
+    [SerializeField] GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     public int Upgrade(int money)
     {

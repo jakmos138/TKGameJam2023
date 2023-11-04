@@ -9,6 +9,11 @@ public class ShootAtEnemy : MonoBehaviour
     public float attDelay;
     private float curAttDelay = 0f;
 
+    private void Start()
+    {
+        curAttDelay = attDelay;
+    }
+
     void Update()
     {
         
@@ -30,7 +35,10 @@ public class ShootAtEnemy : MonoBehaviour
                 }
             }
             Vector3 target = new Vector3(hit[id].transform.position.x, transform.position.y, hit[id].transform.position.z);
-            transform.LookAt(target);
+            if (target != new Vector3(0, 0.6f, 0))
+            {
+                transform.LookAt(target);
+            }
             if (curAttDelay <= 0f)
             {
                 GameObject attack = Instantiate(bullet, transform.position, Quaternion.identity);
