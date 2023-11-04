@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
 {
     private int currentRound = 1;
     private int difficulty = 1;
-    [SerializeField] Path[] paths;
-    [SerializeField] GameObject[] enemies;
+    public Path[] paths;
+    public GameObject[] enemies;
+    public int[] prices;
+    public GameObject[] towers;
     float delay = 1f;
 
     // Update is called once per frame

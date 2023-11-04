@@ -14,7 +14,7 @@ public class EnemyMovementTest : MonoBehaviour
 
     private void Start()
     {
-        this.transform.position = new Vector3(cornerPoints[0][0], cornerPoints[0][1], cornerPoints[0][2]);
+        transform.position = new Vector3(cornerPoints[0][0], cornerPoints[0][1], cornerPoints[0][2]);
     }
 
     // Update is called once per frame
@@ -24,9 +24,9 @@ public class EnemyMovementTest : MonoBehaviour
         {
             float step = speed * Time.deltaTime;
             distanceTravelled += step;
-            this.transform.position = Vector3.MoveTowards(this.transform.position, cornerPoints[currentPoint], step);
+            transform.position = Vector3.MoveTowards(transform.position, cornerPoints[currentPoint], step);
 
-            if (this.transform.position == cornerPoints[currentPoint])
+            if (transform.position == cornerPoints[currentPoint])
             {
                 if (currentPoint == cornerPoints.Length - 1 || currentPoint == 0)
                 {

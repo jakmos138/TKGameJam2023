@@ -12,8 +12,8 @@ public class ShootAtEnemy : MonoBehaviour
     void Update()
     {
         
-        Vector3 origin = new Vector3(this.transform.position.x, 1.2f, this.transform.position.z);
-        RaycastHit[] hit = Physics.SphereCastAll(origin, 3f, transform.forward, 3f, enemyMask);
+        Vector3 origin = new Vector3(transform.position.x, 1.2f, transform.position.z);
+        Collider[] hit = Physics.OverlapSphere(origin, 4.5f, enemyMask);
 
         if (hit.Length > 0)
         {
@@ -29,11 +29,11 @@ public class ShootAtEnemy : MonoBehaviour
                     id = i;
                 }
             }
-            Vector3 target = new Vector3(hit[id].transform.position.x, this.transform.position.y, hit[id].transform.position.z);
+            Vector3 target = new Vector3(hit[id].transform.position.x, transform.position.y, hit[id].transform.position.z);
             transform.LookAt(target);
             if (curAttDelay <= 0f)
             {
-                GameObject attack = Instantiate(bullet, this.transform.position, Quaternion.identity);
+                GameObject attack = Instantiate(bullet, transform.position, Quaternion.identity);
                 attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 18f);
                 curAttDelay = attDelay;
             }

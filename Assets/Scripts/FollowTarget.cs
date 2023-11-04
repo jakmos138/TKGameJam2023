@@ -20,11 +20,11 @@ public class FollowTarget : MonoBehaviour
             }
             else
             {
-                this.transform.position = Vector3.MoveTowards(this.transform.position, target.position, step);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, step);
             }
         } else
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + direction, step);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, step);
         }
     }
 
@@ -33,7 +33,7 @@ public class FollowTarget : MonoBehaviour
         if (collision.collider.CompareTag("Enemy")) {
             Destroy(collision.collider.gameObject);
             Destroy(gameObject);
-        } 
+        }
         else if (collision.collider.CompareTag("EndOfMap"))
         {
             Destroy(gameObject);
@@ -43,7 +43,7 @@ public class FollowTarget : MonoBehaviour
     public void SetParameters(Transform target, float speed, int homing = 0)
     {
         this.target = target;
-        Vector3 direction = target.position - this.transform.position;
+        Vector3 direction = target.position - transform.position;
         this.direction = direction;
         this.speed = speed;
         this.homing = homing;
