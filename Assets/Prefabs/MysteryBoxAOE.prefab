@@ -70,12 +70,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6699447946bc9e94faf44a3bb4fb653e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 156397055783138457}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6699447946bc9e94faf44a3bb4fb653e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3791418381576327210}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6699447946bc9e94faf44a3bb4fb653e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -549595452376270618}
   m_SourcePrefab: {fileID: 100100000, guid: 6699447946bc9e94faf44a3bb4fb653e, type: 3}
---- !u!23 &2998350885729115498 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6699447946bc9e94faf44a3bb4fb653e, type: 3}
-  m_PrefabInstance: {fileID: 4493991679455265262}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3646988048206609599 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6699447946bc9e94faf44a3bb4fb653e, type: 3}
@@ -119,6 +120,38 @@ MonoBehaviour:
   level: 1
   damage: 15
   gameManager: {fileID: 0}
-  renderers:
-  - {fileID: 2998350885729115498}
-  color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &-3791418381576327210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646988048206609599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &-549595452376270618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646988048206609599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba86f988654319c4f83a048d48afd631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outline: {fileID: -3791418381576327210}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  player: {fileID: 1910115726886021494, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}

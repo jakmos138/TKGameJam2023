@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bb4822db375a5754c87c1c3117cbfaa7
+guid: 2c2fe6a8074dfc847ab9fde249efc41f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walking with box
+      name: Idle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 86
+      lastFrame: 250
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -106,7 +106,9 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - cfae1437bc62e254fb93597c8fea7dcc
+  - 612f11ef2e7535140adc55c6c3d71548
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

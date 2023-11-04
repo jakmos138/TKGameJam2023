@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d508903fe02956c4fa19a082b2bb3581
+guid: d15322e322eb6d645a2dafaef02c0fee
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Brutal To Happy Walking
+      name: Walk and Carry
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -106,7 +106,9 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - cfae1437bc62e254fb93597c8fea7dcc
+  - 612f11ef2e7535140adc55c6c3d71548
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

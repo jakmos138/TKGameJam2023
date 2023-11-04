@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     float rotationSpeed = 720f;
 
     GameObject carriedItem;
+
     public int money = 0;
     public LayerMask itemMask;
     public LayerMask gridMask;
@@ -15,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody rb;
     private int cameraPerspective = 0;
     public Transform mainCamera;
+    public float distanceToItem;
+
+    public Animator animator;
     
 
     // Update is called once per frame
@@ -30,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (carriedItem != null)
         {
+            animator.SetBool("carrying", true);
+
             carriedItem.transform.position = transform.position + transform.forward;
             carriedItem.transform.rotation = transform.rotation;
 
@@ -53,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (id != -1)
                 {
+                    objects[id].gameObject.GetComponent<Outline>().OutlineWidth = 10f;
+                    distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         PlaceItem(objects[id].gameObject);
@@ -66,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            animator.SetBool("carrying", false);
+
             Collider[] objects = Physics.OverlapSphere(origin, 1f, itemMask);
 
             if (objects.Length > 0)
@@ -81,7 +91,12 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
                 if (id != -1)
-                {            
+                {
+                    if (!objects[id].gameObject.CompareTag("Station"))
+                    {
+                        objects[id].gameObject.GetComponent<Outline>().OutlineWidth = 10f;
+                    }
+                    distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         InteractItem(objects[id].gameObject);
@@ -103,9 +118,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDirection != new Vector3(0, 0, 0))
         {
+            animator.SetBool("moving", true);
+
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        } else
+        {
+            animator.SetBool("moving", false);
         }
     }
 
