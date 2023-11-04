@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public int lives = 30;
+    
     private int currentRound = 1;
     private int difficulty = 1;
     public Path[] paths;
@@ -20,11 +22,26 @@ public class GameManager : MonoBehaviour
             GameObject enemy = Instantiate(enemies[0], this.transform.position, Quaternion.identity);
             enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[0].cornerPoints;
 
-            delay = 1f;
+            delay = 0.6f;
         } 
         else
         {
             delay -= Time.deltaTime;
         }
+
+        if (lives <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        lives -= damage;
+    }
+
+    void GameOver()
+    {
+
     }
 }

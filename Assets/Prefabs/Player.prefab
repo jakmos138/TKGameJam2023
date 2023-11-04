@@ -118,7 +118,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!136 &4264067780397459259
@@ -179,16 +179,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e47fd015be3ed348aff9adb939f352a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 200
+  money: 500
   itemMask:
     serializedVersion: 2
     m_Bits: 128
   gridMask:
     serializedVersion: 2
     m_Bits: 256
-  stationMask:
-    serializedVersion: 2
-    m_Bits: 1024
   gameManager: {fileID: 0}
   rb: {fileID: 7931855633314607646}
-  movementLimits: []

@@ -29,7 +29,7 @@ public class Station : MonoBehaviour
             if (money >= cost && id != -1)
             {
                 money -= cost;
-                Instantiate(gameManager.towers[0], spawnPoints[id].transform);
+                Instantiate(gameManager.towers[Random.Range(0,3) * 2], spawnPoints[id].transform);
             }
         }
         return money;

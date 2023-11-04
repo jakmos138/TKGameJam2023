@@ -9,9 +9,12 @@ public class ShootAtEnemy : MonoBehaviour
     public float attDelay;
     private float curAttDelay = 0f;
 
+    private Item tower;
+
     private void Start()
     {
         curAttDelay = attDelay;
+        tower = GetComponent<Item>();
     }
 
     void Update()
@@ -22,12 +25,16 @@ public class ShootAtEnemy : MonoBehaviour
 
         if (hit.Length > 0)
         {
-            float maxDistance = -1f;
+            float maxDistance = -1000f;
             int id = -1;
 
             for (int i = 0; i < hit.Length; i++)
             {
                 float distance = hit[i].transform.GetComponent<EnemyMovementTest>().GetDistanceTravelled();
+                if (tower.type == 1 && hit[i].transform.GetComponent<EnemyMovementTest>().IsSlowed())
+                {
+                    distance -= 50f;
+                }
                 if (distance > maxDistance)
                 {
                     maxDistance = distance;
@@ -42,7 +49,12 @@ public class ShootAtEnemy : MonoBehaviour
             if (curAttDelay <= 0f)
             {
                 GameObject attack = Instantiate(bullet, transform.position, Quaternion.identity);
-                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 18f);
+                int homing = 0;
+                if (tower.type == 3)
+                {
+                    homing = 1;
+                }
+                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 18f, homing, tower.type);
                 curAttDelay = attDelay;
             }
             else

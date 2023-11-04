@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float speed = 60f;
-    float rotationSpeed = 600f;
+    float speed = 5f;
+    float rotationSpeed = 720f;
 
     GameObject carriedItem;
     public int money = 0;
@@ -18,16 +18,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-
-        rb.MovePosition(transform.position + moveDirection * Time.deltaTime * speed);
-
-        if (moveDirection != new Vector3(0,0,0))
-        {
-            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
 
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 
@@ -91,6 +81,20 @@ public class PlayerMovement : MonoBehaviour
                     SellItem(objects[id].gameObject);
                 }
             }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+
+        rb.MovePosition(transform.position + moveDirection * Time.deltaTime * speed);
+
+        if (moveDirection != new Vector3(0, 0, 0))
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
     }
 

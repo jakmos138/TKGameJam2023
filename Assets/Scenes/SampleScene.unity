@@ -643,7 +643,7 @@ Transform:
   m_GameObject: {fileID: 228546435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: -0.55}
+  m_LocalPosition: {x: 0, y: 3.5, z: -0.5}
   m_LocalScale: {x: 1, y: 4, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1028,7 +1028,7 @@ Transform:
   m_GameObject: {fileID: 578571497}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: 0.55}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0.5}
   m_LocalScale: {x: 1, y: 4, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1177,6 +1177,12 @@ MonoBehaviour:
   towers:
   - {fileID: 2885450772651097511, guid: af8f5e101a7603945a0cdc872a5c1d75, type: 3}
   - {fileID: 8938433707600873418, guid: ada0ae2f5cbf6ce40b8dde318844d398, type: 3}
+  - {fileID: 8950362012712609069, guid: 09146b5ecae9df04c8979d6474c066d7, type: 3}
+  - {fileID: 5776864262931006208, guid: f8d6b955b4631b647a886a88fba81f1e, type: 3}
+  - {fileID: 3646988048206609599, guid: 61c44a6893507f14aba06afe182aacf1, type: 3}
+  - {fileID: 6769711966471513028, guid: 18a83c2f42ea9b24cbec19c182a49965, type: 3}
+  - {fileID: 5219068546935093023, guid: 6cbccd6019d96a04d9dfaf672cc061cc, type: 3}
+  - {fileID: 7629134874169718077, guid: 36e4d636ee14d044b9969099c0b91f88, type: 3}
 --- !u!4 &691348764
 Transform:
   m_ObjectHideFlags: 0
@@ -2680,8 +2686,8 @@ Transform:
   m_GameObject: {fileID: 1932585713}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.53225803, y: 3.5, z: 0}
-  m_LocalScale: {x: 0.06451613, y: 4, z: 1.2}
+  m_LocalPosition: {x: -0.49999997, y: 3.5, z: 0}
+  m_LocalScale: {x: 0.06451613, y: 4, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1721858262}
@@ -2904,10 +2910,6 @@ PrefabInstance:
     - target: {fileID: 1910115726886021494, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8388180709684473208, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
-      propertyPath: money
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8388180709684473208, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
       propertyPath: gameManager
