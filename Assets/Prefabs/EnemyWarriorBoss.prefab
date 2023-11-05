@@ -504,13 +504,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d90a043abee1f74092c9bf4bfdd3524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 40
+  hp: 720
+  speedMult: 0.2
+  resistance: 2
+  reward: 200
+  hpCost: 20
   cornerPoints:
   - {x: 10, y: 0.5, z: 7.5}
   - {x: -8, y: 0.5, z: 7.5}
   - {x: -8, y: 0.5, z: -7.5}
   - {x: 10, y: 0.5, z: -7.5}
-  speed: 2
   animator: {fileID: 6256860733543977236}
 --- !u!1 &1611151940220227150
 GameObject:

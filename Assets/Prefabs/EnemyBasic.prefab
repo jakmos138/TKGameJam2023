@@ -121,14 +121,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d90a043abee1f74092c9bf4bfdd3524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 40
+  hp: 100
+  speedMult: 1
+  resistance: 0
+  reward: 30
+  hpCost: 1
   cornerPoints:
   - {x: 10, y: 0.5, z: 7.5}
   - {x: -8, y: 0.5, z: 7.5}
   - {x: -8, y: 0.5, z: -7.5}
   - {x: 10, y: 0.5, z: -7.5}
-  speed: 2
   animator: {fileID: 7271659048954055194}
+  player: {fileID: 8388180709684473208, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
 --- !u!1001 &5868851938806205332
 PrefabInstance:
   m_ObjectHideFlags: 0

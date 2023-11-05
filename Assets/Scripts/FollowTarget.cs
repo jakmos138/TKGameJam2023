@@ -37,11 +37,11 @@ public class FollowTarget : MonoBehaviour
         if (collision.collider.CompareTag("Enemy")) {
             if (type == 1)
             {
-                collision.collider.transform.GetComponent<EnemyMovementTest>().SlowDown(2f);
+                collision.collider.transform.GetComponent<EnemyMovementTest>().SlowDown(2f, damage);
             }
-            if (type != 2)
+            else if (type != 2)
             {
-                collision.collider.gameObject.GetComponent<EnemyMovementTest>().TakeDamage(damage);
+                collision.collider.gameObject.GetComponent<EnemyMovementTest>().TakeDamage(damage, type);
             }
             Destroy(gameObject);
         }
@@ -69,7 +69,7 @@ public class FollowTarget : MonoBehaviour
             Collider[] hit = Physics.OverlapSphere(transform.position, 1f, enemyMask);
             for (int i = 0; i < hit.Length; i++)
             {
-                hit[i].gameObject.GetComponent<EnemyMovementTest>().TakeDamage(Mathf.RoundToInt(damage));
+                hit[i].gameObject.GetComponent<EnemyMovementTest>().TakeDamage(Mathf.RoundToInt(damage), type);
                 Instantiate(explosion, transform.position, Quaternion.identity);
             }
         }

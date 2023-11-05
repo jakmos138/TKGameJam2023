@@ -5,23 +5,31 @@ using UnityEngine.Animations;
 
 public class EnemyMovementTest : MonoBehaviour
 {
+    [Header("Stats")]
+    public int hp;
+    public float speedMult;
+    public int resistance;
+    public int reward;
+    public int hpCost;
 
-    public int hp = 30;
+    [Header("References")]
     public Vector3[] cornerPoints;
     private int currentPoint = 1;
-    public float speed = 2f;
+    private float speed = 2f;
     int direction = 1;
     float distanceTravelled = 0f;
-    int hpCost = 1;
     GameManager gameManager;
     public Animator animator;
     float slowTime = 0f;
+    int slowPower;
     float timeTillDeath = 2.4f;
+    private PlayerMovement player;
 
     private void Start()
     {
         transform.position = new Vector3(cornerPoints[0][0], transform.position.y, cornerPoints[0][2]);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -41,10 +49,10 @@ public class EnemyMovementTest : MonoBehaviour
             Destroy(gameObject);
         }
 
-        float step = speed * Time.deltaTime;
+        float step = speed * speedMult * Time.deltaTime;
         if (slowTime > 0f)
         {
-            step *= 0.6f;
+            step *= (1-slowPower/100f);
             slowTime -= Time.deltaTime;
         }
         distanceTravelled += step;
@@ -70,9 +78,10 @@ public class EnemyMovementTest : MonoBehaviour
         return distanceTravelled;
     }
 
-    public void SlowDown(float slowTime)
+    public void SlowDown(float slowTime, int damage)
     {
         this.slowTime = slowTime;
+        this.slowPower = damage;
     }
 
     public bool IsSlowed()
@@ -80,13 +89,21 @@ public class EnemyMovementTest : MonoBehaviour
         return slowTime > 0f;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int type)
     {
-        hp -= damage;
+        if ((type == 3 && resistance == 2) || (type != 3 && resistance == 1))
+        {
+            hp -= Mathf.RoundToInt(damage * 0.7f);
+        }
+        else
+        {
+            hp -= damage;
+        }
     }
 
     private void OnDestroy()
     {
         gameManager.enemiesToKill--;
+        player.money += reward;
     }
 }

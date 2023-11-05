@@ -6,6 +6,8 @@ public class Item : MonoBehaviour
     public int type;
     public int level = 1;
     public int damage;
+    public float attDelay;
+    public float rangeModifier;
 
     [SerializeField] GameManager gameManager;
 
@@ -18,10 +20,10 @@ public class Item : MonoBehaviour
     {
         if (level < 3)
         {
-            if (money >= gameManager.prices[type * 3 + level])
+            if (money >= gameManager.prices[level])
             {
-                value += Mathf.FloorToInt(gameManager.prices[type * 3 + level] * 0.7f);
-                money -= gameManager.prices[type * 3 + level];
+                value += Mathf.FloorToInt(gameManager.prices[level] * 0.7f);
+                money -= gameManager.prices[level];
                 level += 1;
             }
         }

@@ -103,8 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   bullet: {fileID: 9219308246724850039, guid: 8b26e6bcb45a08b409f3a2dc0713d7c1, type: 3}
-  attDelay: 0.7
-  rangeModifier: 1.3
+  tower: {fileID: 1778730911084241395}
 --- !u!135 &4310424760911875360
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -141,5 +140,7 @@ MonoBehaviour:
   value: 70
   type: 1
   level: 1
-  damage: 0
+  damage: 40
+  attDelay: 1.2
+  rangeModifier: 1.3
   gameManager: {fileID: 0}

@@ -39,6 +39,7 @@ public class Station : MonoBehaviour
                         index = 0;
                     }
                     Instantiate(gameManager.towers[index * 2], spawnPoints[id].transform);
+                    firstSummon = false;
                 } else
                 {
                     Instantiate(gameManager.towers[Random.Range(0, 4) * 2], spawnPoints[id].transform);

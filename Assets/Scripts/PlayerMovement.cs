@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private int cameraPerspective = 0;
     public Transform mainCamera;
     public float distanceToItem;
+    public Vector3 cameraTopDownPosition;
+    public Vector3 cameraTopDownRotation;
+    public Vector3 cameraPerspectivePosition;
+    public Vector3 cameraPerspectiveRotation;
 
     public Animator animator;
     
@@ -170,14 +174,14 @@ public class PlayerMovement : MonoBehaviour
         if (cameraPerspective == 0)
         {
             cameraPerspective = 1;
-            mainCamera.position = new Vector3(0, 18, 0);
-            mainCamera.eulerAngles = new Vector3(90f, 0f, 0f);
+            mainCamera.position = cameraTopDownPosition;
+            mainCamera.eulerAngles = cameraTopDownRotation;
 
         } else
         {
             cameraPerspective = 0;
-            mainCamera.position = new Vector3(0, 11.5f, -10);
-            mainCamera.eulerAngles = new Vector3(55f,0f,0f);
+            mainCamera.position = cameraPerspectivePosition;
+            mainCamera.eulerAngles = cameraPerspectiveRotation;
         }
     }
 

@@ -9,12 +9,13 @@ public class GameManager : MonoBehaviour
 
     private bool paused = false;
     
-    private int currentRound = 1;
+    //private int currentRound = 1;
     public Path[] paths;
     public GameObject[] enemies;
     public int[] prices;
     public GameObject[] towers;
     float delay = 25f;
+    private int chosenPath = 0;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject victory;
     [SerializeField] GameObject pauseMenu;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
         if(delay <= 0f)
         {
             GameObject enemy = Instantiate(enemies[Random.Range(0,4)]);
-            enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[0].cornerPoints;
+            enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[chosenPath].cornerPoints;
+            chosenPath = (chosenPath + 1)%paths.Length;
 
             delay = 1.5f;
         } 

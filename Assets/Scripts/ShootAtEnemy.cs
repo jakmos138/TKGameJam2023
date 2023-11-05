@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class ShootAtEnemy : MonoBehaviour
 {
+
     public LayerMask enemyMask;
     public GameObject bullet;
-    public float attDelay;
-    public float rangeModifier;
+    
     private float range = 4f;
     private float curAttDelay = 0f;
 
-    private Item tower;
+    public Item tower;
 
     private void Start()
     {
-        curAttDelay = attDelay;
-        tower = GetComponent<Item>();
+        curAttDelay = tower.attDelay;
     }
 
     void Update()
     {
         
         Vector3 origin = new Vector3(transform.position.x, 1.2f, transform.position.z);
-        Collider[] hit = Physics.OverlapSphere(origin, range, enemyMask);
+        Collider[] hit = Physics.OverlapSphere(origin, range * tower.rangeModifier, enemyMask);
 
         if (hit.Length > 0)
         {
@@ -56,8 +55,8 @@ public class ShootAtEnemy : MonoBehaviour
                 {
                     homing = 1;
                 }
-                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 21f, homing, tower.type, tower.damage);
-                curAttDelay = attDelay;
+                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 18f, homing, tower.type, tower.damage);
+                curAttDelay = 1/tower.attDelay;
             }
             else
             {
