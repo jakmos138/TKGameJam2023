@@ -103,7 +103,7 @@ public class EnemyMovementTest : MonoBehaviour
 
     private void OnDestroy()
     {
-        gameManager.enemiesToKill--;
+        gameManager.enemiesKilled++;
         player.money += reward;
     }
 }

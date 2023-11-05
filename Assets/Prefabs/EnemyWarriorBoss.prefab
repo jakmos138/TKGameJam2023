@@ -506,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 720
   speedMult: 0.2
-  resistance: 2
+  resistance: 1
   reward: 200
   hpCost: 20
   cornerPoints:
