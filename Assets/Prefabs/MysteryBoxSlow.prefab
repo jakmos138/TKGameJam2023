@@ -70,12 +70,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 388ac26928ac1cd4899133ea4e6a480f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6638959409393270419}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 388ac26928ac1cd4899133ea4e6a480f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2791061672900906203}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 388ac26928ac1cd4899133ea4e6a480f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4187858476891724823}
   m_SourcePrefab: {fileID: 100100000, guid: 388ac26928ac1cd4899133ea4e6a480f, type: 3}
 --- !u!1 &8950362012712609069 stripped
 GameObject:
@@ -115,45 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8316c9b780d6b40b28a3a18f0f4ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 70
+  value: 140
   type: 1
   level: 1
   damage: 40
   attDelay: 0
   rangeModifier: 0
+  bulletSpeedModifier: 0
   gameManager: {fileID: 0}
---- !u!114 &2791061672900906203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8950362012712609069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &-4187858476891724823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8950362012712609069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba86f988654319c4f83a048d48afd631, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outline: {fileID: 2791061672900906203}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  player: {fileID: 1910115726886021494, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Station : MonoBehaviour
 {
     public int type = 0;
-    public int cost = 100;
+    public int cost = 250;
     public GameObject[] spawnPoints;
     [SerializeField] GameManager gameManager;
     private bool firstSummon = true;

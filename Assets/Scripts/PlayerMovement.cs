@@ -98,10 +98,6 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (id != -1)
                 {
-                    if (objects[id].gameObject.CompareTag("Box"))
-                    {
-                        objects[id].gameObject.GetComponent<Outline>().OutlineWidth = 10f;
-                    }
                     distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
                     if (Input.GetKeyDown(KeyCode.E))
                     {

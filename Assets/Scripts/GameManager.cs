@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Random.InitState(138);
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -70,48 +71,50 @@ public class GameManager : MonoBehaviour
         {
             Pause();
         }
-
-        if(spawnCounters[currentRound - 1] == 0)
+        if (currentRound < 21)
         {
-            int total = 0;
-            for (int i = 0; i < currentRound; i++)
+            if (spawnCounters[currentRound - 1] == 0)
             {
-                total += totalCounters[i];
-            }
-            if (enemiesKilled == total)
-            {
-                currentRound++;
-            }
-        }
-
-        if(delay <= 0f)
-        {
-            if (spawnCounters[currentRound - 1] > 0)
-            {
-                int value = Mathf.FloorToInt(Random.value * 12);
-
-                while (enemyCounts[currentRound - 1][value] == 0)
+                int total = 0;
+                for (int i = 0; i < currentRound; i++)
                 {
-                    value--;
-                    if (value < 0)
-                    {
-                        value = 11;
-                    }
+                    total += totalCounters[i];
                 }
-
-                GameObject enemy = Instantiate(enemies[value]);
-                enemyCounts[currentRound - 1][value]--;
-                spawnCounters[currentRound - 1]--;
-
-                enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[chosenPath].cornerPoints;
-                chosenPath = (chosenPath + 1) % paths.Length;
-
-                delay = 1.5f - (0.2f * (currentRound % 5));
+                if (enemiesKilled == total)
+                {
+                    currentRound++;
+                }
             }
-        } 
-        else
-        {
-            delay -= Time.deltaTime;
+
+            if (delay <= 0f)
+            {
+                if (spawnCounters[currentRound - 1] > 0)
+                {
+                    int value = Mathf.FloorToInt(Random.value * 12);
+
+                    while (enemyCounts[currentRound - 1][value] == 0)
+                    {
+                        value--;
+                        if (value < 0)
+                        {
+                            value = 11;
+                        }
+                    }
+
+                    GameObject enemy = Instantiate(enemies[value]);
+                    enemyCounts[currentRound - 1][value]--;
+                    spawnCounters[currentRound - 1]--;
+
+                    enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[chosenPath].cornerPoints;
+                    chosenPath = (chosenPath + 1) % paths.Length;
+
+                    delay = 1.5f - (0.2f * (currentRound % 5));
+                }
+            }
+            else
+            {
+                delay -= Time.deltaTime;
+            }
         }
 
         if (lives <= 0)

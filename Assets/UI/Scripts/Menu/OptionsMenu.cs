@@ -13,16 +13,15 @@ public class OptionsMenu : MonoBehaviour
 
     [SerializeField] Slider master;
     
-    /*private void Start()
+    private void Start()
     {
         master.value = PlayerPrefs.GetFloat("Master", 0);
-    }*/
+        Time.timeScale = 1;
+    }
 
-    public void SetVolume(/*float volume*/)
+    public void SetVolume(float volume)
     {
-        //audioMixer.SetFloat("MasterVolume", volume);
-        //PlayerPrefs.SetFloat("Master", volume);
-        float volume = master.value;
+        PlayerPrefs.SetFloat("Master", volume);
         audioMixer.SetFloat("Master", Mathf.Log10(volume)*20);
     }
 

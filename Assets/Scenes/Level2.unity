@@ -2497,7 +2497,7 @@ AudioSource:
   m_GameObject: {fileID: 614401845}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: b98145b61f5960f48b4050adfeb4c124, type: 2}
   m_audioClip: {fileID: 8300000, guid: c19215624dee5094d85ce4ce3c2f8da7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2832,7 +2832,7 @@ MonoBehaviour:
   - {fileID: 5943424330027518400, guid: f787e96c1e189d1418eb9b6a303b0c9a, type: 3}
   - {fileID: 1557341231727729210, guid: 183c643cc347506479af074a42ad630a, type: 3}
   - {fileID: 5272167079074115950, guid: a6c0199637fd8444aa9f1233d3b4fd66, type: 3}
-  prices: 64000000fa000000f4010000
+  prices: c800000090010000e8030000
   towers:
   - {fileID: 2885450772651097511, guid: af8f5e101a7603945a0cdc872a5c1d75, type: 3}
   - {fileID: 8938433707600873418, guid: ada0ae2f5cbf6ce40b8dde318844d398, type: 3}
@@ -10457,6 +10457,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3666199008670656651, guid: 05ba80d97dbc65342b0c9ad59d524c2a, type: 3}
+      propertyPath: cost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666199008670656651, guid: 05ba80d97dbc65342b0c9ad59d524c2a, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 691348763}
@@ -10640,7 +10644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8388180709684473208, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
       propertyPath: money
-      value: 160
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 8388180709684473208, guid: 2f4a45eb302fd374882e9c4f014f5b6e, type: 3}
       propertyPath: moneyText
