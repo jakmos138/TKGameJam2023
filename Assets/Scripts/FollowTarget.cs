@@ -8,7 +8,6 @@ public class FollowTarget : MonoBehaviour
     private Transform target;
     Vector3 direction;
     private float speed;
-    private int homing;
     private int type;
     private int damage;
     public GameObject explosion;
@@ -16,20 +15,7 @@ public class FollowTarget : MonoBehaviour
     void Update()
     {
         float step = speed * Time.deltaTime;
-        if (homing == 1)
-        {
-            if (target == null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-            }
-        } else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, step);
-        }
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, step);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -51,7 +37,7 @@ public class FollowTarget : MonoBehaviour
         }
     }
 
-    public void SetParameters(Transform target, float speed, int homing, int type, int damage)
+    public void SetParameters(Transform target, float speed, int type, int damage)
     {
         this.target = target;
         Vector3 direction = target.position - transform.position;
