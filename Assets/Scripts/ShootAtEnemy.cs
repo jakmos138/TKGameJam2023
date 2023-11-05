@@ -55,7 +55,7 @@ public class ShootAtEnemy : MonoBehaviour
                 {
                     homing = 1;
                 }
-                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 18f, homing, tower.type, tower.damage);
+                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 12f * tower.bulletSpeedModifier, homing, tower.type, tower.damage);
                 curAttDelay = 1/tower.attDelay;
             }
             else

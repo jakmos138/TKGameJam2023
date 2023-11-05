@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
     public int damage;
     public float attDelay;
     public float rangeModifier;
+    public float bulletSpeedModifier = 1f;
 
     [SerializeField] GameManager gameManager;
 
@@ -28,6 +29,7 @@ public class Item : MonoBehaviour
                 damage = Mathf.RoundToInt(damage * (1f + (0.05f * level)));
                 attDelay = attDelay * (1f + (0.05f * level));
                 rangeModifier = rangeModifier * (1f + (0.05f * level));
+                bulletSpeedModifier = bulletSpeedModifier * (1f + (0.05f * level));
             }
         }
 
