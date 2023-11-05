@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemies;
     public int[] prices;
     public GameObject[] towers;
-    float delay = 25f;
+    float delay = 15f;
     private int chosenPath = 0;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject victory;
@@ -100,7 +101,7 @@ public class GameManager : MonoBehaviour
                 enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[chosenPath].cornerPoints;
                 chosenPath = (chosenPath + 1) % paths.Length;
 
-                delay = 1.5f;
+                delay = 1.5f - (0.2f * (currentRound % 3));
             }
         } 
         else
@@ -140,7 +141,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    private void Pause()
+    public void Pause()
     {
         if (paused)
         {
@@ -153,5 +154,10 @@ public class GameManager : MonoBehaviour
             paused = true;
             Time.timeScale = 0;
         }
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 }
