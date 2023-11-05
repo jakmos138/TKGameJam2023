@@ -143,4 +143,5 @@ MonoBehaviour:
   damage: 30
   attDelay: 1.3
   rangeModifier: 1
+  bulletSpeedModifier: 1.1
   gameManager: {fileID: 0}

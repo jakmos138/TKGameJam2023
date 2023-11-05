@@ -15,7 +15,7 @@ public class EnemyMovementTest : MonoBehaviour
     [Header("References")]
     public Vector3[] cornerPoints;
     private int currentPoint = 1;
-    private float speed = 2f;
+    private float speed = 2.4f;
     int direction = 1;
     float distanceTravelled = 0f;
     GameManager gameManager;
