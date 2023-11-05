@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -8,6 +6,8 @@ public class Item : MonoBehaviour
     public int type;
     public int level = 1;
     public int damage;
+    public float attDelay;
+    public float rangeModifier;
 
     [SerializeField] GameManager gameManager;
 
@@ -20,13 +20,20 @@ public class Item : MonoBehaviour
     {
         if (level < 3)
         {
-            if (money >= gameManager.prices[type * 3 + level])
+            if (money >= gameManager.prices[level])
             {
-                value += Mathf.FloorToInt(gameManager.prices[type * 3 + level] * 0.7f);
+                value += Mathf.FloorToInt(gameManager.prices[level] * 0.7f);
+                money -= gameManager.prices[level];
                 level += 1;
-                money -= gameManager.prices[type * 3 + level];
             }
         }
+
+        Material material = transform.parent.GetComponent<Renderer>().material;
+        if (level == 2)
+        material.color = Color.white;
+        else if (level == 3)
+        material.color = Color.black;
+
         return money;
     }
 }

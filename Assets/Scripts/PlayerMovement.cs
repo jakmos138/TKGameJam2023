@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     float rotationSpeed = 720f;
 
     GameObject carriedItem;
+
     public int money = 0;
     public LayerMask itemMask;
     public LayerMask gridMask;
@@ -15,6 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody rb;
     private int cameraPerspective = 0;
     public Transform mainCamera;
+    public float distanceToItem;
+    public Vector3 cameraTopDownPosition;
+    public Vector3 cameraTopDownRotation;
+    public Vector3 cameraPerspectivePosition;
+    public Vector3 cameraPerspectiveRotation;
+
+    public Animator animator;
     
 
     // Update is called once per frame
@@ -30,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (carriedItem != null)
         {
+            animator.SetBool("carrying", true);
+
             carriedItem.transform.position = transform.position + transform.forward;
             carriedItem.transform.rotation = transform.rotation;
 
@@ -51,10 +61,13 @@ public class PlayerMovement : MonoBehaviour
                         }
                     }
                 }
-
-                if (Input.GetKeyDown(KeyCode.E) && id != -1)
+                if (id != -1)
                 {
-                    PlaceItem(objects[id].gameObject);
+                    distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        PlaceItem(objects[id].gameObject);
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.Q))
@@ -64,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            animator.SetBool("carrying", false);
+
             Collider[] objects = Physics.OverlapSphere(origin, 1f, itemMask);
 
             if (objects.Length > 0)
@@ -80,6 +95,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (id != -1)
                 {
+                    if (objects[id].gameObject.CompareTag("Box"))
+                    {
+                        objects[id].gameObject.GetComponent<Outline>().OutlineWidth = 10f;
+                    }
+                    distanceToItem = Vector3.Distance(objects[id].gameObject.transform.position, transform.position);
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         InteractItem(objects[id].gameObject);
@@ -101,9 +121,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveDirection != new Vector3(0, 0, 0))
         {
+            animator.SetBool("moving", true);
+
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        } else
+        {
+            animator.SetBool("moving", false);
         }
     }
 
@@ -126,6 +151,8 @@ public class PlayerMovement : MonoBehaviour
     void SellItem(GameObject item)
     {
         money += item.GetComponent<Item>().value;
+        if(item.transform.parent.CompareTag("Grid"))
+            item.transform.parent.GetComponent<Renderer>().material.color = Color.red;
         Destroy(item);
     }
 
@@ -147,14 +174,14 @@ public class PlayerMovement : MonoBehaviour
         if (cameraPerspective == 0)
         {
             cameraPerspective = 1;
-            mainCamera.position = new Vector3(0, 18, 0);
-            mainCamera.eulerAngles = new Vector3(90f, 0f, 0f);
+            mainCamera.position = cameraTopDownPosition;
+            mainCamera.eulerAngles = cameraTopDownRotation;
 
         } else
         {
             cameraPerspective = 0;
-            mainCamera.position = new Vector3(0, 11.5f, -10);
-            mainCamera.eulerAngles = new Vector3(55f,0f,0f);
+            mainCamera.position = cameraPerspectivePosition;
+            mainCamera.eulerAngles = cameraPerspectiveRotation;
         }
     }
 

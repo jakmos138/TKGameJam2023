@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8a59706bd460150438fae261e35da76e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a59706bd460150438fae261e35da76e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a59706bd460150438fae261e35da76e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a59706bd460150438fae261e35da76e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103,8 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   bullet: {fileID: 9219308246724850039, guid: d99e498979e69e8478237d2e90e03046, type: 3}
-  attDelay: 0.7
-  rangeModifier: 1.1
+  tower: {fileID: 5555622958413278680}
 --- !u!135 &3500269349884572015
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -141,5 +140,7 @@ MonoBehaviour:
   value: 70
   type: 3
   level: 1
-  damage: 20
+  damage: 35
+  attDelay: 1
+  rangeModifier: 1.1
   gameManager: {fileID: 0}
