@@ -22,12 +22,15 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 cameraPerspectivePosition;
     public Vector3 cameraPerspectiveRotation;
 
+    public TMPro.TextMeshProUGUI moneyText;
+
     public Animator animator;
     
 
     // Update is called once per frame
     void Update()
     {
+        SetMoney();
 
         Vector3 origin = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 
@@ -185,4 +188,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void SetMoney()
+    {
+        moneyText.text = "Money: " + money;
+    }
 }

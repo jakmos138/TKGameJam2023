@@ -53,6 +53,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject ui;
 
+    public TMPro.TextMeshProUGUI roundText;
+    public TMPro.TextMeshProUGUI livesText;
+
     private void Start()
     {
         Random.InitState(138);
@@ -61,6 +64,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetUI();
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
@@ -101,7 +106,7 @@ public class GameManager : MonoBehaviour
                 enemy.GetComponent<EnemyMovementTest>().cornerPoints = paths[chosenPath].cornerPoints;
                 chosenPath = (chosenPath + 1) % paths.Length;
 
-                delay = 1.5f - (0.2f * (currentRound % 3));
+                delay = 1.5f - (0.2f * (currentRound % 5));
             }
         } 
         else
@@ -159,5 +164,11 @@ public class GameManager : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadSceneAsync(0);
+    }
+
+    void SetUI()
+    {
+        livesText.text = "Lives: " + lives;
+        roundText.text = "Round: " + currentRound + "/20";
     }
 }
