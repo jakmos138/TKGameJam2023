@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,12 @@ public class Station : MonoBehaviour
     public GameObject[] spawnPoints;
     [SerializeField] GameManager gameManager;
     private bool firstSummon = true;
+    System.Random nonSeededRandom;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        nonSeededRandom = new System.Random();
     }
 
     public int Interact(int money)
@@ -33,7 +36,7 @@ public class Station : MonoBehaviour
                 money -= cost;
                 if (firstSummon)
                 {
-                    int index = Random.Range(0, 4);
+                    int index = nonSeededRandom.Next(0, 4);
                     if (index == 1)
                     {
                         index = 0;
@@ -42,7 +45,7 @@ public class Station : MonoBehaviour
                     firstSummon = false;
                 } else
                 {
-                    Instantiate(gameManager.towers[Random.Range(0, 4) * 2], spawnPoints[id].transform);
+                    Instantiate(gameManager.towers[nonSeededRandom.Next(0, 4) * 2], spawnPoints[id].transform);
                 }
             }
         }
