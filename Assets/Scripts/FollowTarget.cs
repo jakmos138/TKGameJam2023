@@ -43,7 +43,6 @@ public class FollowTarget : MonoBehaviour
         Vector3 direction = target.position - transform.position;
         this.direction = direction;
         this.speed = speed;
-        this.homing = homing;
         this.type = type;
         this.damage = damage;
     }
