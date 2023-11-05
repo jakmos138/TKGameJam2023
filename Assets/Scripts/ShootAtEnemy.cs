@@ -50,7 +50,7 @@ public class ShootAtEnemy : MonoBehaviour
             if (curAttDelay <= 0f)
             {
                 GameObject attack = Instantiate(bullet, transform.position, Quaternion.identity);
-                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 12f * tower.bulletSpeedModifier, tower.type, tower.damage);
+                attack.transform.GetComponent<FollowTarget>().SetParameters(hit[id].transform, 15f * tower.bulletSpeedModifier, tower.type, tower.damage);
                 curAttDelay = 1/tower.attDelay;
             }
             else
