@@ -25,6 +25,9 @@ public class Item : MonoBehaviour
                 value += Mathf.FloorToInt(gameManager.prices[level] * 0.7f);
                 money -= gameManager.prices[level];
                 level += 1;
+                damage = Mathf.RoundToInt(damage * (1f + (0.05f * level)));
+                attDelay = attDelay * (1f + (0.05f * level));
+                rangeModifier = rangeModifier * (1f + (0.05f * level));
             }
         }
 
